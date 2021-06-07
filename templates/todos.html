@@ -1,0 +1,59 @@
+{% block links %}
+<link rel="stylesheet" href={{url_for('static',filename='css/todos.css' )}}>
+{% endblock links %}
+{% extends 'base.html' %}
+{% block title %}
+flash todo application | All your todos
+{% endblock title %}
+{% block body %}
+<div class="container">
+    <div class="mt-5 table-warper">
+        <table class="table">
+            <fieldset>
+                <legend>
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <h2>your Todos</h2>
+                        </div>
+                        <div>
+                            <a href="create" class="btn btn-primary" target="_blank" rel="noopener noreferrer">create
+                                one</a>
+                        </div>
+                    </div>
+                </legend>
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">task</th>
+                        <th scope="col">status</th>
+                        <th scope="col">deadline</th>
+                        <th scope="col">owner</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for todo in todos %}
+                    <tr>
+                        <th scope="row">{{todo.id}}</th>
+                        <td>{{todo.owner}}</td>
+                        <td>{{todo.is_completed}}</td>
+                        <td>{{todo.deadline}}</td>
+                        <td>{{todo.created_at}}</td>
+                        <td>
+                            <a href="" class="btn btn-info text-white" target="_blank">Edit</a>
+                            <a href="delete/{{todo.id}}" class="btn btn-danger" target="_blank"
+                                rel="noopener noreferrer">Delete</a>
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+
+                </tbody>
+            </fieldset>
+        </table>
+    </div>
+</div>
+{% endblock body %}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block links %}
+<link rel="stylesheet" href={{url_for('static',filename='css/create.css' )}}>
+{% endblock links %}
+{% block title %}
+flash todo application | Create a todos
+{% endblock title %}
+{% block body %}
+<div class="container">
+    <div class="mt-5 form-wrapper">
+        <form method="post" action="create" onsubmit="return validate()">
+            <fieldset>
+                <legend>
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <h2>Create new todo</h2>
+                        </div>
+                        <div>
+                            <a href="/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Todos</a>
+                        </div>
+                    </div>
+                </legend>
+                <div class="mb-3">
+                    <label for="ownerName" class="form-label">owner name
+                        &nbsp;<span class="text-danger owner-name-warning">What is owner name ?</span>
+                    </label>
+                    <input type="text" class="form-control" id="ownerName" aria-describedby="ownerName"
+                        name="ownername">
+                </div>
+                <div class="mb-3">
+                    <label for="todoTask" class="form-label">Your todo
+                        &nbsp;<span class="text-danger todo-task-warning">What todo you wanna add? </span>
+                    </label>
+                    <input type="text" class="form-control" id="todoTask" aria-describedby="ownerName" name="todotask">
+                </div>
+
+                <div class="mb-3">
+                    <label for="todoDeadLine" class="form-label">Todo Deadline
+                        &nbsp;<span class="text-danger todo-task-warning">What todo your todo deadline ? </span>
+                    </label>
+                    <input type="date" class="form-control" id="todoDeadLine" aria-describedby="ownerName"
+                        name="tododeadline">
+                </div>
+                <button type="submit" class="btn btn-primary">Create Todo</button>
+            </fieldset>
+        </form>
+    </div>
+</div>
+{% endblock body %}
